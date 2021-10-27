@@ -61,8 +61,7 @@ Játék ikonjának megváltoztatása
 Életerőcsík színe változik a játékos életerejének függvényében
 
 2021.10.24
-Doboz, váza, hordó hozzáadása
-Törhető objektumok létrehozása
+Doboz, váza, hordó hozzáadása, törhető objektummá tétele
 
 2021.10.24
 Projekt feltöltése a GitHubra
