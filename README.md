@@ -1,11 +1,11 @@
 # szakdolgozat
 Mighty Hero
 
-Fő karakter: saját
+Fő karakter textúra: saját
 
-Slime: Unity Asset
+Slime textúra: Unity Asset
 
-Pálya textúra: Unity Asset
+Pálya textúrák: Unity Asset
 
 2021.10.13
 Unity projekt létrehozása
