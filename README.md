@@ -2,7 +2,9 @@
 Mighty Hero
 
 Fő karakter: saját
+
 Slime: Unity Asset
+
 Pálya textúra: Unity Asset
 
 2021.10.13
