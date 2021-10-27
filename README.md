@@ -6,7 +6,6 @@ Slime: Unity Asset
 Pálya textúra: Unity Asset
 
 2021.10.13
-
 Unity projekt létrehozása
 Környezet kialakítása
 Tilemapping elkészítése
