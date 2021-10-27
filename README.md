@@ -4,7 +4,6 @@ Mighty Hero
 Fő karakter: saját
 Slime: Unity Asset
 Pálya textúra: Unity Asset
-PathFinding algoritmus: Unity Asset
 
 2021.10.13
 
@@ -63,3 +62,6 @@ Játék ikonjának megváltoztatása
 2021.10.24
 Doboz, váza, hordó hozzáadása
 Törhető objektumok létrehozása
+
+2021.10.24
+Projekt feltöltése a GitHubra

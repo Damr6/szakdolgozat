@@ -5,7 +5,7 @@ A lezárt szintek más ajtóval jelennek meg
 Fade in-out
 kulcs a pálya végén
 
-AI enemyknek
+Pathfinding enemyknek
 Kész szintek
 Enemyk: frog, slime, skeleton, valami boss
 pályaszerkesztő
