@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
+    public int levelAmount = 5;
+
     public CharacterController2D controller;
     public Animator animator;
 
@@ -132,19 +134,21 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (currentHealth > 0)
+        if (!animator.GetBool("IsCrouching"))
         {
-            currentHealth -= damage;
-            healthBar.SetHealth(currentHealth);
+            if (currentHealth > 0)
+            {
+                currentHealth -= damage;
+                healthBar.SetHealth(currentHealth);
 
-            // Hurt animation
+                // Hurt animation
+            }
+
+            else if (playerAlive)
+            {
+                Die();
+            }
         }
-
-        else if (playerAlive)
-        {
-            Die();
-        }
-
     }
 
     void Die()
@@ -221,7 +225,14 @@ public class Player : MonoBehaviour
                 collider.enabled = false;
 
                 // Switch levels with doors
-                Select(1);
+
+                for (int i = 0; i < levelAmount; i++)
+                {
+                    if(collider.gameObject.name == "Door" + i)
+                    {
+                        Select(i);
+                    }
+                }
             }
 
             Debug.Log("We used " + collider.gameObject.tag);
@@ -254,7 +265,7 @@ public class Player : MonoBehaviour
             UseItem(collider);
         }
 
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && collider.gameObject.tag != ("Breakable") && !animator.GetBool("IsCrouching"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && collider.gameObject.tag != ("Breakable"))
         {
             TakeDamage(Enemy.attackDamage);
         }
@@ -275,7 +286,7 @@ public class Player : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collider)
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && collider.gameObject.tag != ("Breakable") && !animator.GetBool("IsCrouching"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && collider.gameObject.tag != ("Breakable"))
         {
             TakeDamage(Enemy.attackDamage);
             //Debug.Log("Player HP:" + currentHealth);
