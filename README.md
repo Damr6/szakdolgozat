@@ -66,5 +66,5 @@ Doboz, váza, hordó hozzáadása, törhető objektummá tétele.
 2021.10.27.
 Projekt feltöltése a GitHubra.
 
-2021.11.03
+2021.11.03.
 Pálya választható a hozzátartozó ajtó kinyitásával.
