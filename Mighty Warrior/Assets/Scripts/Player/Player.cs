@@ -221,10 +221,16 @@ public class Player : MonoBehaviour
                 collider.enabled = false;
 
                 // Switch levels with doors
+                Select(1);
             }
 
             Debug.Log("We used " + collider.gameObject.tag);
         }
+    }
+
+    public void Select(int levelIndex)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + levelIndex);
     }
 
 
