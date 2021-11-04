@@ -68,3 +68,6 @@ Projekt feltöltése a GitHubra.
 
 2021.11.03.
 Pálya választható a hozzátartozó ajtó kinyitásával.
+
+2021.11.04.
+Halálüzenet hozzáadása.
