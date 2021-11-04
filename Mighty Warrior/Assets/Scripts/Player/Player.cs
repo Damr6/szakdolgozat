@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-
             if (Input.GetButtonDown("Jump") && jumpAllow)
             {
                 jump = true;
@@ -75,7 +74,7 @@ public class Player : MonoBehaviour
             if (Time.time >= nextAttackTime)
             {
                 // Time speed has nothing to do with the Slash animation
-                if (Input.GetButtonDown("Slash") && !crouch && !animator.GetBool("IsJumping") && !PauseMenu.GameIsPaused)
+                if (Input.GetButtonDown("Slash") && !animator.GetBool("IsCrouching") && !animator.GetBool("IsJumping") && !PauseMenu.GameIsPaused)
                 {
                     // Not allowed to jump and move during the slash
                     tempRunSpeed = runSpeed;
@@ -229,11 +228,11 @@ public class Player : MonoBehaviour
 
                 // Switch levels with doors
 
-                for (int i = 0; i < levelAmount; i++)
+                for (int level = 0; level < levelAmount; level++)
                 {
-                    if(collider.gameObject.name == "Door" + i)
+                    if(collider.gameObject.name == "Door" + level)
                     {
-                        Select(i);
+                        Select(level);
                     }
                 }
             }
