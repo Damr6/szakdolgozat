@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     int currentHealth;
 
     public HealthBar healthBar;
+    public TMP_Text dieMessage;
 
     public Sprite openedChest;
     public Sprite openedDoor;
@@ -153,6 +155,7 @@ public class Player : MonoBehaviour
 
     void Die()
     {
+        dieMessage.gameObject.SetActive(true);
         Debug.Log("You Died!");
         Time.timeScale = 0.3f;
         horizontalMove = 0;
