@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     bool jump = false;
 
     bool crouch = false;
+    bool byWall;
 
     public LayerMask enemyLayers;
     public Transform attackPoint;
@@ -53,7 +54,17 @@ public class Player : MonoBehaviour
         if (playerAlive)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
+            // Move animation stops when player by wall
+            if (byWall)
+            {
+                animator.SetFloat("Speed", 0);
+            } else
+            {
+                animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+            }
+
+
             if (Input.GetButtonDown("Jump") && jumpAllow)
             {
                 jump = true;
@@ -282,7 +293,11 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collider)
     {
-
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Wall") && byWall == false)
+        {
+            byWall = true;
+            Debug.Log(byWall);
+        }
     }
 
 
@@ -298,7 +313,11 @@ public class Player : MonoBehaviour
 
     public void OnCollisionExit2D(Collision2D collider)
     {
-
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Wall") && byWall == true)
+        {
+            byWall = false;
+            Debug.Log(byWall);
+        }
     }
 }
 
