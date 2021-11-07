@@ -71,3 +71,6 @@ Pálya választható a hozzátartozó ajtó kinyitásával.
 
 2021.11.04.
 Halálüzenet hozzáadása.
+
+2021.11.07.
+Ha a játékos a fal mellett áll, és a fal felé szeretne menni, az animáció nem fog lejátszódni.
