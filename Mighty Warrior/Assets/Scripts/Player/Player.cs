@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     public int levelAmount = 5;
 
     public CharacterController2D controller;
-    public Animator animator;
+    public Animator playerAnimator;
+    public Animator transition;
 
     public float runSpeed = 40f;
     public float tempRunSpeed;
@@ -51,24 +52,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame (Inputs)
     void Update()
     {
-        if (playerAlive)
+        if (playerAlive && !PauseMenu.GameIsPaused)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
             // Move animation stops when player by wall
             if (byWall)
             {
-                animator.SetFloat("Speed", 0);
+                playerAnimator.SetFloat("Speed", 0);
             } else
             {
-                animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+                playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
             }
 
 
             if (Input.GetButtonDown("Jump") && jumpAllow)
             {
                 jump = true;
-                animator.SetBool("IsJumping", true);
+                playerAnimator.SetBool("IsJumping", true);
             }
 
             if (Input.GetButtonDown("Crouch"))
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour
             if (Time.time >= nextAttackTime)
             {
                 // Time speed has nothing to do with the Slash animation
-                if (Input.GetButtonDown("Slash") && !animator.GetBool("IsCrouching") && !animator.GetBool("IsJumping") && !PauseMenu.GameIsPaused)
+                if (Input.GetButtonDown("Slash") && !playerAnimator.GetBool("IsCrouching") && !playerAnimator.GetBool("IsJumping"))
                 {
                     // Not allowed to jump and move during the slash
                     tempRunSpeed = runSpeed;
@@ -93,7 +94,7 @@ public class Player : MonoBehaviour
                     jumpAllow = false;
 
                     nextAttackTime = Time.time + 1f / attackRate;
-                    animator.SetTrigger("Slash");
+                    playerAnimator.SetTrigger("Slash");
                     Invoke("Attack", 0.3f);
                 }
             }
@@ -146,7 +147,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!animator.GetBool("IsCrouching"))
+        if (!playerAnimator.GetBool("IsCrouching"))
         {
             if (currentHealth > 0)
             {
@@ -169,7 +170,7 @@ public class Player : MonoBehaviour
         Debug.Log("You Died!");
         Time.timeScale = 0.3f;
         horizontalMove = 0;
-        animator.SetFloat("Speed", 0);
+        playerAnimator.SetFloat("Speed", 0);
         playerAlive = false;
 
         // Die animation
@@ -178,11 +179,14 @@ public class Player : MonoBehaviour
         
     }
 
-    void ReloadScene()
+    public static void ReloadScene()
     {
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        //FADE
+
+        SelectLevel(0);
     }
 
     // Attack range circle
@@ -195,12 +199,12 @@ public class Player : MonoBehaviour
 
     public void OnLanding()
     {
-        animator.SetBool("IsJumping", false);
+        playerAnimator.SetBool("IsJumping", false);
     }
 
     public void OnCrouching( bool isCrouching)
     {
-        animator.SetBool("IsCrouching", isCrouching);
+        playerAnimator.SetBool("IsCrouching", isCrouching);
         
     }
 
@@ -217,7 +221,7 @@ public class Player : MonoBehaviour
     void UseItem(Collider2D collider)
     {
 
-        if (!animator.GetBool("IsJumping") && playerAlive)
+        if (!playerAnimator.GetBool("IsJumping") && playerAlive)
         {
             if (collider.gameObject.tag == "Chest")
             {
@@ -243,7 +247,7 @@ public class Player : MonoBehaviour
                 {
                     if(collider.gameObject.name == "Door" + level)
                     {
-                        Select(level);
+                        SelectLevel(level);
                     }
                 }
             }
@@ -252,8 +256,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Select(int levelIndex)
+    public static void SelectLevel(int levelIndex)
     {
+
+        //FADE
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + levelIndex);
     }
 
@@ -296,7 +303,6 @@ public class Player : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("Wall") && byWall == false)
         {
             byWall = true;
-            Debug.Log(byWall);
         }
     }
 
@@ -316,7 +322,6 @@ public class Player : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("Wall") && byWall == true)
         {
             byWall = false;
-            Debug.Log(byWall);
         }
     }
 }

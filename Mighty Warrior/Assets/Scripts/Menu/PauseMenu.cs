@@ -42,7 +42,9 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        Player.ReloadScene();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadMenu()
     {
