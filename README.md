@@ -74,3 +74,7 @@ Halálüzenet hozzáadása.
 
 2021.11.07.
 Ha a játékos a fal mellett áll, és a fal felé szeretne menni, az animáció nem fog lejátszódni.
+
+2021.11.09.
+Szünet menü hibájának javítása (A menü közben a játékos animációi lejátszódtak)
+Áttűnés hozzáadása a színterek közé.
