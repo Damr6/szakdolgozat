@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     bool jump = false;
 
     bool crouch = false;
-    bool byWall;
+    bool byWall = false;
 
     public LayerMask enemyLayers;
     public Transform attackPoint;
@@ -76,7 +76,6 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Crouch"))
             {
                 crouch = true;
-
             }
             else if (Input.GetButtonUp("Crouch"))
             {
@@ -185,11 +184,8 @@ public class Player : MonoBehaviour
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
 
-        //FADE
         LevelLoader.levelToGo = SceneManager.GetActiveScene().buildIndex;
         LevelLoader.startLoad = true;
-
-        //SelectLevel(0);
     }
 
     // Attack range circle
@@ -252,23 +248,12 @@ public class Player : MonoBehaviour
                     {
                         LevelLoader.levelToGo = SceneManager.GetActiveScene().buildIndex + level;
                         LevelLoader.startLoad = true;
-
-
-                       // SelectLevel(level);
                     }
                 }
             }
 
             Debug.Log("We used " + collider.gameObject.tag);
         }
-    }
-
-    public void SelectLevel(int levelIndex)
-    {
-
-        //FADE
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + levelIndex);
     }
 
 
