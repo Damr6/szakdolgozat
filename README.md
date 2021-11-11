@@ -78,3 +78,6 @@ Ha a játékos a fal mellett áll, és a fal felé szeretne menni, az animáció
 2021.11.09.
 Szünet menü hibájának javítása (A menü közben a játékos animációi lejátszódtak)
 Áttűnés hozzáadása a színterek közé.
+
+2021.11.11.
+Áttűnés kódjának rendezése, működőképessé tétele.
