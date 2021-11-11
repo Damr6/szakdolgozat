@@ -7,17 +7,17 @@ using TMPro;
 public class Player : MonoBehaviour
 {
 
-    public int levelAmount = 5;
+    public static int levelAmount = 5;
+    public static int levelToGo;
 
     public CharacterController2D controller;
     public Animator playerAnimator;
-    public Animator transition;
 
     public float runSpeed = 40f;
     public float tempRunSpeed;
     float horizontalMove = 0f;
 
-    bool playerAlive; 
+    bool playerAlive;
 
     bool jumpAllow = true;
     bool jump = false;
@@ -60,7 +60,8 @@ public class Player : MonoBehaviour
             if (byWall)
             {
                 playerAnimator.SetFloat("Speed", 0);
-            } else
+            }
+            else
             {
                 playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
             }
@@ -129,7 +130,7 @@ public class Player : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            if(enemy.tag == "Breakable")
+            if (enemy.tag == "Breakable")
             {
                 BreakItem(enemy);
             }
@@ -138,7 +139,7 @@ public class Player : MonoBehaviour
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
                 Debug.Log("We hit " + enemy.name);
             }
-            
+
         }
 
         runSpeed = tempRunSpeed;
@@ -176,21 +177,23 @@ public class Player : MonoBehaviour
         // Die animation
 
         Invoke("ReloadScene", 1f);
-        
+
     }
 
-    public static void ReloadScene()
+    public void ReloadScene()
     {
         Time.timeScale = 1f;
         PauseMenu.GameIsPaused = false;
 
         //FADE
+        LevelLoader.levelToGo = SceneManager.GetActiveScene().buildIndex;
+        LevelLoader.startLoad = true;
 
-        SelectLevel(0);
+        //SelectLevel(0);
     }
 
     // Attack range circle
-    void OnDrawGizmosSelected() 
+    void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
             return;
@@ -202,10 +205,10 @@ public class Player : MonoBehaviour
         playerAnimator.SetBool("IsJumping", false);
     }
 
-    public void OnCrouching( bool isCrouching)
+    public void OnCrouching(bool isCrouching)
     {
         playerAnimator.SetBool("IsCrouching", isCrouching);
-        
+
     }
 
     void BreakItem(Collider2D collider)
@@ -245,9 +248,13 @@ public class Player : MonoBehaviour
 
                 for (int level = 0; level < levelAmount; level++)
                 {
-                    if(collider.gameObject.name == "Door" + level)
+                    if (collider.gameObject.name == "Door" + level)
                     {
-                        SelectLevel(level);
+                        LevelLoader.levelToGo = SceneManager.GetActiveScene().buildIndex + level;
+                        LevelLoader.startLoad = true;
+
+
+                       // SelectLevel(level);
                     }
                 }
             }
@@ -256,7 +263,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public static void SelectLevel(int levelIndex)
+    public void SelectLevel(int levelIndex)
     {
 
         //FADE
