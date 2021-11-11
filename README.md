@@ -1,5 +1,4 @@
 # szakdolgozat
-Mighty Hero
 
 Fő karakter textúra: saját
 
