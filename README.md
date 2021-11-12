@@ -80,3 +80,6 @@ Szünet menü hibájának javítása. (A menü közben a játékos animációi l
 
 2021.11.11.
 Áttűnés kódjának rendezése, működőképessé tétele.
+
+2021.11.12.
+Ellenség mozgásának kialakítása, animációinak hozzáadása.
