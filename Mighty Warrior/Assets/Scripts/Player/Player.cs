@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     public float nextAttackTime = 0f;
     public float attackRange = 0.5f;
     public int attackDamage = 20;
-    public int maxHealth = 100;
+    public int maxHealth = 1000;
     int currentHealth;
 
     public HealthBar healthBar;
@@ -151,6 +151,8 @@ public class Player : MonoBehaviour
         {
             if (currentHealth > 0)
             {
+                Enemy.animator.SetTrigger("Attack");
+                
                 currentHealth -= damage;
                 healthBar.SetHealth(currentHealth);
 
@@ -301,6 +303,7 @@ public class Player : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collider)
     {
+
         if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && collider.gameObject.tag != ("Breakable"))
         {
             TakeDamage(Enemy.attackDamage);
