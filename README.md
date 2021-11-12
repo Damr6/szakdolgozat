@@ -1,5 +1,4 @@
 # szakdolgozat
-Mighty Hero
 
 Fő karakter textúra: saját
 
@@ -76,8 +75,11 @@ Halálüzenet hozzáadása.
 Ha a játékos a fal mellett áll, és a fal felé szeretne menni, az animáció nem fog lejátszódni.
 
 2021.11.09.
-Szünet menü hibájának javítása (A menü közben a játékos animációi lejátszódtak)
+Szünet menü hibájának javítása. (A menü közben a játékos animációi lejátszódtak.)
 Áttűnés hozzáadása a színterek közé.
 
 2021.11.11.
 Áttűnés kódjának rendezése, működőképessé tétele.
+
+2021.11.12.
+Ellenség mozgásának kialakítása, animációinak hozzáadása.
