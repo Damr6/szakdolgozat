@@ -83,3 +83,9 @@ Szünet menü hibájának javítása. (A menü közben a játékos animációi l
 
 2021.11.12.
 Ellenség mozgásának kialakítása, animációinak hozzáadása.
+
+2021.11.14.
+Az ellenség képes felmenni a dombos részre.
+Az ellenség folyamatos forgásának kijavítása, ha a játékos felette áll.
+Szünet menü hozzáadása az összes színtérhez.
+Animáció javítások.
