@@ -7,10 +7,9 @@ public class Enemy : MonoBehaviour
     public Transform player;
     float agroRange;
     float moveSpeed;
+    bool isJumping;
     public static Animator animator;
     Rigidbody2D rb2d;
-
-    
 
     int currentHealth;
     public static int attackDamage;
@@ -66,9 +65,13 @@ public class Enemy : MonoBehaviour
         {
             // Die animation
             Debug.Log("Enemy died!");
-            GetComponent<SpriteRenderer>().sprite = null;
-            GetComponent<Collider2D>().enabled = false;
-            this.enabled = false;
+
+            gameObject.SetActive(false);
+
+            //Destroy(gameObject.GetComponent<Rigidbody2D>());
+            //GetComponent<SpriteRenderer>().sprite = null;
+            //GetComponent<Collider2D>().enabled = false;
+            //this.enabled = false;
 
             
 
@@ -90,21 +93,54 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+    /*
+     * 
+     *  FUNCTIONS
+     * 
+     */
+
+
     void Chase()
     {
         animator.SetBool("Walk", true);
+        if (player.position.x - transform.position.x < 1 && player.position.x - transform.position.x > -1)
+        {
+            if (!isJumping)
+            {
+                rb2d.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(0, moveSpeed);
+            }
+        }
 
-        if(transform.position.x < player.position.x)
+        else if(transform.position.x < player.position.x)
         {
             // enemy to the left, move right
-            rb2d.velocity = new Vector2(moveSpeed, 0);
+            if (!isJumping)
+            {
+                rb2d.velocity = new Vector2(moveSpeed, 0);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(0, moveSpeed);
+            }
             transform.localScale = new Vector2(1, 1);
 
         }
         else
         {
             //enemy to the right, move left
-            rb2d.velocity = new Vector2(-moveSpeed, 0);
+            if (!isJumping)
+            {
+                rb2d.velocity = new Vector2(-moveSpeed, 0);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(0, moveSpeed);
+            }
             transform.localScale = new Vector2(-1, 1);
         }
     }
@@ -114,4 +150,5 @@ public class Enemy : MonoBehaviour
         animator.SetBool("Walk", false);
         rb2d.velocity = new Vector2(0,0);
     }
+
 }
