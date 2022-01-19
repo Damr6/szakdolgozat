@@ -89,3 +89,19 @@ Az ellenség képes felmenni a dombos részre.
 Az ellenség folyamatos forgásának kijavítása, ha a játékos felette áll.
 Szünet menü hozzáadása az összes színtérhez.
 Animáció javítások.
+
+2021.11.28.
+Pályaszerkesztő színtér hozzáadása.
+Pályaszerkesztő menüjének megvalósítása.
+
+2021.12.12.
+Elemek hozzáadása a pályaszerkesztőhöz.
+A pályaszerkesztő menüje eltüntethető.
+
+2021.12.26.
+Fal, padló és dekoráció elemek elhelyezhetők a pályaszerkesztőben.
+További elemek hozzáadása a pályaszerkesztőhöz.
+
+2021.01.09.
+Entitások hozzáadása a pályaszerkesztő menüjéhez.
+Az elemek elhelyezésének könnyítése, gyorsítása téglalap és vonal alakban történő elhelyezés lehetőségével.
