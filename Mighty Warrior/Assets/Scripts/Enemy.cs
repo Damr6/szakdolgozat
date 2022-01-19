@@ -7,19 +7,23 @@ public class Enemy : MonoBehaviour
     public Transform player;
     float agroRange;
     float moveSpeed;
-    bool isJumping;
     public static Animator animator;
     Rigidbody2D rb2d;
+
+    bool isJumping;
+    bool byPlayer;
 
     int currentHealth;
     public static int attackDamage;
     public static float attackRate;
     public static float nextAttackTime = 0f;
 
+    float tempMoveSpeed;
+
     //Slime
     public Animator slimeAnimator;
     public int slimeMaxHealth = 100;
-    public int slimeAttackDamage = 1;
+    public int slimeAttackDamage = 10;
     public float slimeAttackRate = 1f;
     public float slimeAgroRange = 5;
     public float slimeMoveSpeed = 4;
@@ -83,7 +87,7 @@ public class Enemy : MonoBehaviour
     {
         float distToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distToPlayer < agroRange)
+        if (distToPlayer < agroRange && !byPlayer)
         {
             Chase();
         }
@@ -116,7 +120,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        else if(transform.position.x < player.position.x)
+        else if (transform.position.x < player.position.x)
         {
             // enemy to the left, move right
             if (!isJumping)
@@ -149,6 +153,25 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("Walk", false);
         rb2d.velocity = new Vector2(0,0);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collider)
+    {
+        if (collider.gameObject.tag == "player")
+        {
+            byPlayer = true;
+            //Debug.Log(byPlayer);
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D collider)
+    {
+        if (collider.gameObject.tag == "player")
+        {
+            byPlayer = false;
+            //Debug.Log(byPlayer);
+
+        }
     }
 
 }

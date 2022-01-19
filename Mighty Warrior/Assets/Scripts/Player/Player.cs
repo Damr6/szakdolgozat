@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
     public Sprite openedChest;
     public Sprite openedDoor;
 
+    private float nextDamageTime = Enemy.attackRate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -147,23 +149,33 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!playerAnimator.GetBool("IsCrouching"))
+        
+        if (currentHealth > 0)
         {
-            if (currentHealth > 0)
+            Enemy.animator.SetTrigger("Attack");
+            //Debug.Log(Enemy.animator.GetCurrentAnimatorStateInfo().length);
+            Debug.Log("nextDamageTime: " + nextDamageTime);
+            Debug.Log("Time.time: " + Time.time);
+            if (Time.time >= nextDamageTime)
             {
-                Enemy.animator.SetTrigger("Attack");
-                
-                currentHealth -= damage;
-                healthBar.SetHealth(currentHealth);
+                nextDamageTime = Time.time + Enemy.attackRate;
 
-                // Hurt animation
-            }
+                if (!playerAnimator.GetBool("IsCrouching"))
+                {
+                    currentHealth -= damage;
+                    healthBar.SetHealth(currentHealth);
+                    Debug.Log("hit");
 
-            else if (playerAlive)
-            {
-                Die();
+                    // Hurt animation
+                }
             }
         }
+
+        else if (playerAlive)
+        {
+            Die();
+        }
+        
     }
 
     void Die()
@@ -274,7 +286,7 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        if (Input.GetButtonDown("Use"))
+        if (Input.GetButtonDown("Use") && collider.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
             UseItem(collider);
         }
@@ -297,6 +309,10 @@ public class Player : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("Wall") && byWall == false)
         {
             byWall = true;
+        }
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && collider.gameObject.tag != ("Breakable"))
+        {
+            nextDamageTime = Time.time + 0.5f;
         }
     }
 
