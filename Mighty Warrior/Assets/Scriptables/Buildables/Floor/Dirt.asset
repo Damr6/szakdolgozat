@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 0
   tileBase: {fileID: 11400000, guid: 46eb2cbe56d6eea4eb5f9da0a22118ce, type: 2}
+  placeType: 1
