@@ -104,4 +104,4 @@ További elemek hozzáadása a pályaszerkesztőhöz.
 
 2021.01.09.
 Entitások hozzáadása a pályaszerkesztő menüjéhez.
-Az elemek elhelyezésének könnyítéseí gyorsítása téglalap és vonal alakban történő elhelyezés lehetőségével.
+Az elemek elhelyezésének könnyítése, gyorsítása téglalap és vonal alakban történő elhelyezés lehetőségével.
