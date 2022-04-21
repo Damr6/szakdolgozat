@@ -102,6 +102,15 @@ A pályaszerkesztő menüje eltüntethető.
 Fal, padló és dekoráció elemek elhelyezhetők a pályaszerkesztőben.
 További elemek hozzáadása a pályaszerkesztőhöz.
 
-2021.01.09.
+2022.01.09.
 Entitások hozzáadása a pályaszerkesztő menüjéhez.
 Az elemek elhelyezésének könnyítése, gyorsítása téglalap és vonal alakban történő elhelyezés lehetőségével.
+
+2022.03.05.
+Pályaszerkesztő hibáinak javítása.
+Pályaszerkesztő elemeinek kategóriákba helyezése.
+
+2022.04.21.
+Pályaszerkesztő tilemapjeinek automatikus létrehozásának megvalósítása.
+Pályaszerkesztő menüjének kis átalakítása.
+
