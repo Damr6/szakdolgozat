@@ -3,22 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public enum Category
-{
-    Wall,
-    Floor
-}
-
-public enum PlaceType { 
-    Single,
-    Line,
-    Rectangle
-}
-
-[CreateAssetMenu (fileName = "Buildable", menuName = "BuildingObjects/Create Buildable")]
+[CreateAssetMenu (fileName = "Buildable", menuName = "levelBuilding/Create Buildable")]
 public class BuildingObjectBase : ScriptableObject
 {
-    [SerializeField] Category category;
+    [SerializeField] BuildingCategory category;
+    [SerializeField] UICategory uiCategory;
     [SerializeField] TileBase tileBase;
     [SerializeField] PlaceType placeType;
 
@@ -36,15 +25,23 @@ public class BuildingObjectBase : ScriptableObject
     {
         get
         {
-            return placeType;
+            return placeType == PlaceType.None ? category.PlaceType: placeType;
         }
     }
 
-    public Category Category
+    public BuildingCategory Category
     {
         get
         {
             return category;
+        }
+    }
+
+    public UICategory UICategory
+    {
+        get
+        {
+            return uiCategory;
         }
     }
 }

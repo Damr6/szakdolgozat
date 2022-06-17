@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class BuildingCreator : Singleton<BuildingCreator>
 {
@@ -73,9 +74,21 @@ public class BuildingCreator : Singleton<BuildingCreator>
         }
     }
 
+    private Tilemap tilemap
+    {
+        get
+        {
+            if (selectedObj != null && selectedObj.Category != null && selectedObj.Category.Tilemap != null){
+                return selectedObj.Category.Tilemap;
+            }
+
+            return defaultMap;
+        }
+    }
+
     private void Update()
     {
-        if (selectedObj != null)
+        if (selectedObj != null && (SceneManager.GetActiveScene().name == "LevelEditor"))
         {
             Vector3 pos = _camera.ScreenToWorldPoint(mousePos);
             Vector3Int gridPos = previewMap.WorldToCell(pos);
@@ -190,7 +203,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
                 //Line and Rectangle are the same
                 case PlaceType.Line:
                 case PlaceType.Rectangle:
-                    DrawBounds(defaultMap);
+                    DrawBounds(tilemap);
                     previewMap.ClearAllTiles();
                     break;
             }
@@ -255,6 +268,6 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void DrawItem()
     {
-        defaultMap.SetTile(currentGridPosition, tileBase);
+        tilemap.SetTile(currentGridPosition, tileBase);
     }
 }

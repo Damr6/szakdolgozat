@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     bool crouch = false;
     bool byWall = false;
 
+    bool canMove = true;
+
     public LayerMask enemyLayers;
     public Transform attackPoint;
 
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame (Inputs)
     void Update()
     {
-        if (playerAlive && !PauseMenu.GameIsPaused)
+        if (playerAlive && !PauseMenu.GameIsPaused && canMove)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
@@ -249,7 +251,8 @@ public class Player : MonoBehaviour
 
             else if (collider.gameObject.tag == "Door")
             {
-
+                canMove = false;
+                runSpeed = 0f;
                 collider.GetComponent<SpriteRenderer>().sprite = openedDoor;
                 collider.GetComponent<Collider2D>().enabled = false;
                 collider.enabled = false;
