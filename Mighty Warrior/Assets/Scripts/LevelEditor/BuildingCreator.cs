@@ -27,7 +27,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
     BoundsInt bounds; //corners of a box aka rectangle
     
     protected override void Awake()
-    {
+    { 
         base.Awake();
         playerInput = new PlayerInput();
         _camera = Camera.main;
@@ -180,7 +180,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
             {
                 case PlaceType.Single: 
                 default:
-                    DrawItem();
+                    DrawItem(tilemap, currentGridPosition, tileBase);
                     break;
                 case PlaceType.Line:
                     LineRenderer();
@@ -261,13 +261,26 @@ public class BuildingCreator : Singleton<BuildingCreator>
         {
             for (int y = bounds.yMin; y <= bounds.yMax; y++)
             {
-                map.SetTile(new Vector3Int(x, y, 0), tileBase);
+                DrawItem(map, new Vector3Int(x, y, 0), tileBase);
             }
         }
     }
 
-    private void DrawItem()
+    private void DrawItem(Tilemap map, Vector3Int position, TileBase tileBase)
     {
-        tilemap.SetTile(currentGridPosition, tileBase);
+        if (selectedObj.GetType() == typeof(BuildingTool))
+            // it is a tool
+        {
+            BuildingTool tool = (BuildingTool)selectedObj;
+
+            tool.Use(position);
+        }
+        else
+            // not a tool
+        {
+            tilemap.SetTile(position, tileBase);
+        }
+
+
     }
 }

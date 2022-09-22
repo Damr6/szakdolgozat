@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b2ff2621420574aa49ffaf8c2bbc35, type: 3}
   m_Name: Floor
   m_EditorClassIdentifier: 
-  siblingIndex: 0
+  siblingIndex: 2
   backgroundColor: {r: 0.6862745, g: 0.9620137, b: 1, a: 1}
