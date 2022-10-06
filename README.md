@@ -114,3 +114,18 @@ Pályaszerkesztő elemeinek kategóriákba helyezése.
 Pályaszerkesztő tilemapjeinek automatikus létrehozásának megvalósítása.
 Pályaszerkesztő menüjének kis átalakítása.
 
+2022.05.25.
+Pályaszerkesztő menüjének szerkesztése.
+Pályaszerkesztő automatikusan létrehozott tilemapjeinek javítása.
+
+2022.06.15.
+Pályaszerkesztő kibővítése radírozási lehetőséggel.
+
+2022.07.05.
+Radír hozzáadása a pályaszerkesztő menüjéhez.
+
+2022.08.16.
+Pályaszerkesztő menüjének előkészítése további eszközök számára.
+
+2022.09.29.
+Pályaszerkesztő radírjának javítása.
