@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89371f4b44ffbc74db81b20418dcc41d, type: 3}
-  m_Name: Tool
+  m_Name: Earser
   m_EditorClassIdentifier: 
-  category: 0
-  tileBase: {fileID: 0}
-  placeType: 0
+  category: {fileID: 11400000, guid: 49d930627ce5e324191f8c1a6fd80913, type: 2}
+  uiCategory: {fileID: 11400000, guid: f20cfe58bfd706c4982129e161acf9eb, type: 2}
+  tileBase: {fileID: 11400000, guid: 717558fdb2e155c4aaccaf83fa3f52d5, type: 2}
+  placeType: 1
+  toolType: 1
