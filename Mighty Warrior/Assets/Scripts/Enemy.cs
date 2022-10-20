@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     //Slime
     public Animator slimeAnimator;
     public int slimeMaxHealth = 100;
-    public int slimeAttackDamage = 10;
+    public int slimeAttackDamage = 1;
     public float slimeAttackRate = 1f;
     public float slimeAgroRange = 5;
     public float slimeMoveSpeed = 4;

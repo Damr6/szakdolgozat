@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SaveHandler : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class SaveHandler : MonoBehaviour
     {
         initTilemaps();
         InitTileReferences();
+
+        if (SceneManager.GetActiveScene().name.StartsWith("Stage"))
+        {
+            Debug.Log("Map Loaded");
+            OnLoad();
+        }
     }
 
     private void InitTileReferences()

@@ -39,11 +39,13 @@ public class Player : MonoBehaviour
 
     public HealthBar healthBar;
     public TMP_Text dieMessage;
+    public TMP_Text winMessage;
 
     public Sprite openedChest;
     public Sprite openedDoor;
 
     private float nextDamageTime = Enemy.attackRate;
+    private bool slimeCanAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -204,6 +206,15 @@ public class Player : MonoBehaviour
         LevelLoader.startLoad = true;
     }
 
+    public void LoadLobby()
+    {
+        Time.timeScale = 1f;
+        PauseMenu.GameIsPaused = false;
+
+        LevelLoader.levelToGo = 2; //Lobby is 2nd in build
+        LevelLoader.startLoad = true;
+    }
+
     // Attack range circle
     void OnDrawGizmosSelected()
     {
@@ -246,6 +257,16 @@ public class Player : MonoBehaviour
                 collider.enabled = false;
 
                 // XP, coin and health can be looted
+
+                winMessage.gameObject.SetActive(true);
+                Debug.Log("You Won!");
+                Time.timeScale = 0.3f;
+                horizontalMove = 0;
+                playerAnimator.SetFloat("Speed", 0);
+
+                // Die animation
+
+                Invoke("LoadLobby", 1f);
 
             }
 
@@ -337,8 +358,13 @@ public class Player : MonoBehaviour
         {
             byWall = false;
         }
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && collider.gameObject.tag != ("Breakable"))
+        {
+            nextDamageTime = Time.time;
+        }
     }
 }
+
 
 /*
  * Debug.Log can log twice at collisions because the player consists of 2 colliders.
