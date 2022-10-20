@@ -129,3 +129,11 @@ Pályaszerkesztő menüjének előkészítése további eszközök számára.
 
 2022.09.29.
 Pályaszerkesztő radírjának javítása.
+
+2022.10.12.
+Mentés és betöltés hozzáadása a pályaszerkesztőhöz.
+
+2022.10.20.
+Ellenfél támadásának javítása.
+Törhető objektumok módosítása.
+Pálya betöltése más színterekbe.
