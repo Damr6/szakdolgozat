@@ -18,9 +18,14 @@ public class ToolController : Singleton<ToolController>
             {
                 tilemaps.Add(map);
             }
-        }
+        });
 
-            );
+        //tilemaps.Sort((a, b) => {
+        //    TilemapRenderer aRenderer = a.GetComponent<TilemapRenderer>();
+        //    TilemapRenderer bRenderer = b.GetComponent<TilemapRenderer>();
+
+        //    return bRenderer.sortingOrder.CompareTo(aRenderer.sortingOrder); //Higher values on top, lowers in the end
+        //});
     }
 
     public void Eraser(Vector3Int position)
@@ -31,6 +36,33 @@ public class ToolController : Singleton<ToolController>
         {
             map.SetTile(position, null);
         });
+    }
+
+    public void Player(Vector3Int position)
+    {
+        Debug.Log("Use Player");
+
+        //Place player
+    }
+
+    public void EndBox(Vector3Int position)
+    {
+        Debug.Log("Use EndBox");
+
+        //Place EndBox
+    }
+    public void Box(Vector3Int position)
+    {
+        Debug.Log("Use Box");
+
+        //Place Box
+    }
+
+    public void Enemy(Vector3Int position)
+    {
+        Debug.Log("Use Enemy");
+
+        //Place Box
     }
 
 }

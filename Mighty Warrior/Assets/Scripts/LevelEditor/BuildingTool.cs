@@ -5,7 +5,11 @@ using UnityEngine;
 enum ToolType
 {
     None,
-    Eraser
+    Eraser,
+    Player,
+    EndBox,
+    Box,
+    Enemy
 }
 
 
@@ -23,6 +27,18 @@ public class BuildingTool : BuildingObjectBase
         {
             case ToolType.Eraser:
                 tc.Eraser(position);
+                break;
+            case ToolType.Player:
+                tc.Player(position);
+                break;
+            case ToolType.EndBox:
+                tc.EndBox(position);
+                break;
+            case ToolType.Box:
+                tc.Box(position);
+                break;
+            case ToolType.Enemy:
+                tc.Enemy(position);
                 break;
 
             default:

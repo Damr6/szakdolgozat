@@ -178,10 +178,6 @@ public class BuildingCreator : Singleton<BuildingCreator>
         {
             switch (selectedObj.PlaceType)
             {
-                case PlaceType.Single: 
-                default:
-                    DrawItem(tilemap, currentGridPosition, tileBase);
-                    break;
                 case PlaceType.Line:
                     LineRenderer();
                     break;
@@ -205,6 +201,10 @@ public class BuildingCreator : Singleton<BuildingCreator>
                 case PlaceType.Rectangle:
                     DrawBounds(tilemap);
                     previewMap.ClearAllTiles();
+                    break;
+                case PlaceType.Single:
+                default:
+                    DrawItem(tilemap, currentGridPosition, tileBase);
                     break;
             }
         }
@@ -268,7 +268,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void DrawItem(Tilemap map, Vector3Int position, TileBase tileBase)
     {
-        if (selectedObj.GetType() == typeof(BuildingTool))
+        if (map != previewMap && selectedObj.GetType() == typeof(BuildingTool))
             // it is a tool
         {
             BuildingTool tool = (BuildingTool)selectedObj;
