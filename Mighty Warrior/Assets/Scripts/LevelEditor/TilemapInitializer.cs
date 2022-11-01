@@ -21,6 +21,11 @@ public class TilemapInitializer : Singleton<TilemapInitializer> //Makes sure the
             Tilemap map = obj.AddComponent<Tilemap>();
             TilemapRenderer tr = obj.AddComponent<TilemapRenderer>();
 
+            if (obj.name == "Tilemap_Wall")
+            {
+                TilemapCollider2D col = obj.AddComponent<TilemapCollider2D>();
+            }
+
             obj.transform.SetParent(grid);
 
             //Settings

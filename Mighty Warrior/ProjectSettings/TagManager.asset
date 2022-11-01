@@ -11,6 +11,8 @@ TagManager:
   - player
   - Slime
   - Breakable
+  - LevelEditorManager
+  - ItemImage
   layers:
   - Default
   - TransparentFX

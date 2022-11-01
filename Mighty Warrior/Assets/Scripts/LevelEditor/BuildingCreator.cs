@@ -29,12 +29,15 @@ public class BuildingCreator : Singleton<BuildingCreator>
     protected override void Awake()
     { 
         base.Awake();
+
         playerInput = new PlayerInput();
+
         _camera = Camera.main;
     }
 
     private void OnEnable()
     {
+
         playerInput.Enable();
 
         playerInput.Gameplay.MousePosition.performed += OnMouseMove;
@@ -49,6 +52,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void OnDisable()
     {
+
         playerInput.Disable();
 
         playerInput.Gameplay.MousePosition.performed -= OnMouseMove;
@@ -59,6 +63,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
         playerInput.Gameplay.MouseRightClick.performed -= OnRightClick;
         playerInput.Gameplay.Tab.performed -= OnTabPressed;
+
     }
 
     // Setter
@@ -138,7 +143,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
                     HandleDrawRelease();
                 }
             }
-            
+
         }
     }
 

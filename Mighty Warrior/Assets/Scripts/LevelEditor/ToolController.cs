@@ -8,6 +8,15 @@ public class ToolController : Singleton<ToolController>
 {
     List<Tilemap> tilemaps = new List<Tilemap>();
 
+    public GameObject player;
+    public GameObject endBox;
+    public GameObject vase;
+    public GameObject barrel;
+    public GameObject box;
+    public GameObject enemy;
+
+    SpriteRenderer SpriteToChange;
+
     private void Start()
     {
         List<Tilemap> maps = FindObjectsOfType<Tilemap>().ToList();
@@ -38,31 +47,12 @@ public class ToolController : Singleton<ToolController>
         });
     }
 
+    // Enitynél a pozíciót vissza kell tenni, ne csússzon el
+
     public void Player(Vector3Int position)
     {
         Debug.Log("Use Player");
 
         //Place player
     }
-
-    public void EndBox(Vector3Int position)
-    {
-        Debug.Log("Use EndBox");
-
-        //Place EndBox
-    }
-    public void Box(Vector3Int position)
-    {
-        Debug.Log("Use Box");
-
-        //Place Box
-    }
-
-    public void Enemy(Vector3Int position)
-    {
-        Debug.Log("Use Enemy");
-
-        //Place Box
-    }
-
 }

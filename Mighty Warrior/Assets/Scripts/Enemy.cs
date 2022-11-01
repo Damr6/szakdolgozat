@@ -85,16 +85,24 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distToPlayer < agroRange && !byPlayer)
+        if (player)
         {
-            Chase();
+            float distToPlayer = Vector2.Distance(transform.position, player.position);
+
+            if (distToPlayer < agroRange && !byPlayer)
+            {
+                Chase();
+            }
+            else
+            {
+                StopChase();
+            }
         }
         else
         {
             StopChase();
         }
+
     }
 
 
