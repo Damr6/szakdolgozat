@@ -19,11 +19,13 @@ public class SaveHandler : MonoBehaviour
         initTilemaps();
         InitTileReferences();
 
-        if (SceneManager.GetActiveScene().name.StartsWith("Stage"))
+        if (SceneManager.GetActiveScene().name.Equals("Stage1"))
         {
             Debug.Log("Map Loaded");
             OnLoad();
+            FindEntities.LoadPrefabs();
         }
+
     }
 
     private void InitTileReferences()
@@ -91,6 +93,7 @@ public class SaveHandler : MonoBehaviour
 
     public void OnLoad()
     {
+
         List<TilemapData> data = FileHandler.ReadListFromJSON<TilemapData>(filename);
         foreach(var mapData in data)
         {

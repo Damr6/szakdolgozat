@@ -8,10 +8,16 @@ public class LevelEditorManager : MonoBehaviour
 
     public ItemController[] ItemButtons;
     public GameObject[] ItemPrefabs;
+    public static GameObject[] PublicItemPrefabs;
     public GameObject[] ItemImage;
     public int CurrentButtonPressed;
 
-    private void Update()
+    private void Awake()
+    {
+        PublicItemPrefabs = ItemPrefabs; //static, FindEntities hasznalja
+    }
+
+private void Update()
     {
         if (SceneManager.GetActiveScene().name == "LevelEditor")
         {

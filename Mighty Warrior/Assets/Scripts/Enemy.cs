@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -28,6 +29,17 @@ public class Enemy : MonoBehaviour
     public float slimeAgroRange = 5;
     public float slimeMoveSpeed = 4;
 
+    private void Awake()
+    {
+        if(SceneManager.GetActiveScene().name == "LevelEditor")
+        {
+            player = null;
+        }
+        else
+        {
+            player = GameObject.FindWithTag("player").transform;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
