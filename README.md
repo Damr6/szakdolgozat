@@ -137,3 +137,14 @@ Mentés és betöltés hozzáadása a pályaszerkesztőhöz.
 Ellenfél támadásának javítása.
 Törhető objektumok módosítása.
 Pálya betöltése más színterekbe.
+
+2022.11.07.
+Pályaszerkesztő menüjének bővítése objektumokkal.
+Objektumok lehelyezhetők a pályaszerkesztőben.
+
+2022.11.12.
+Objektumok helyének fájlba mentése, fájlból való betöltése.
+
+2022.11.25.
+Pályaszerkesztő átláthatóságának javítása.
+Egy teljes pálya összeállítható, és végigjátszható.
