@@ -1,11 +1,5 @@
 # szakdolgozat
 
-Fő karakter textúra: saját
-
-Slime textúra: Unity Asset
-
-Pálya textúrák: Unity Asset
-
 2021.10.13.
 Unity projekt létrehozása.
 Környezet kialakítása.
