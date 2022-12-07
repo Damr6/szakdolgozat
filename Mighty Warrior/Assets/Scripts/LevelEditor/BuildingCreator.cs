@@ -12,6 +12,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     [SerializeField] Tilemap previewMap, defaultMap;
     PlayerInput playerInput;
+    bool inputEnabled = false;
 
     TileBase tileBase;
     BuildingObjectBase selectedObj;
@@ -37,8 +38,9 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void OnEnable()
     {
-
         playerInput.Enable();
+
+        inputEnabled = true;
 
         playerInput.Gameplay.MousePosition.performed += OnMouseMove;
 
@@ -52,17 +54,22 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void OnDisable()
     {
+        if (inputEnabled)
+        {
+            playerInput.Disable();
+            inputEnabled = false;
+            playerInput.Gameplay.MousePosition.performed -= OnMouseMove;
 
-        playerInput.Disable();
+            playerInput.Gameplay.MouseLeftClick.performed -= OnLeftClick;
+            playerInput.Gameplay.MouseLeftClick.started -= OnLeftClick;
+            playerInput.Gameplay.MouseLeftClick.canceled -= OnLeftClick;
 
-        playerInput.Gameplay.MousePosition.performed -= OnMouseMove;
+            playerInput.Gameplay.MouseRightClick.performed -= OnRightClick;
+            playerInput.Gameplay.Tab.performed -= OnTabPressed;
 
-        playerInput.Gameplay.MouseLeftClick.performed -= OnLeftClick;
-        playerInput.Gameplay.MouseLeftClick.started -= OnLeftClick;
-        playerInput.Gameplay.MouseLeftClick.canceled -= OnLeftClick;
+        }
 
-        playerInput.Gameplay.MouseRightClick.performed -= OnRightClick;
-        playerInput.Gameplay.Tab.performed -= OnTabPressed;
+
 
     }
 

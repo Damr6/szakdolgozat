@@ -24,8 +24,6 @@ private void Update()
             Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 
-
-
             if (Input.GetMouseButtonDown(0) && ItemButtons[CurrentButtonPressed].Clicked)
             {
                 ItemButtons[CurrentButtonPressed].Clicked = false;
