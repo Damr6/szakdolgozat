@@ -54,7 +54,7 @@ public class BuildingHUD : Singleton<BuildingHUD>
 
         foreach(BuildingObjectBase b in buildables)
         {
-            Debug.Log(b.UICategory);
+            //Debug.Log(b.UICategory);
 
             if(b.UICategory == null)
             {

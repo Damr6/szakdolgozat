@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FindEntities : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class FindEntities : MonoBehaviour
 
         List<EnemyData> myPrefabs = SaveEntities.Load();
 
-        if (ItemPrefabs != null && myPrefabs != null)
+        if ( (ItemPrefabs != null && myPrefabs != null))
         {
             foreach (EnemyData mp in myPrefabs)
             {
@@ -72,7 +73,7 @@ public class FindEntities : MonoBehaviour
                     }
                 }
             }
-        }
+        } 
 
     }
 

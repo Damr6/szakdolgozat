@@ -26,7 +26,7 @@ public class TilemapInitializer : Singleton<TilemapInitializer> //Makes sure the
                 TilemapCollider2D col = obj.AddComponent<TilemapCollider2D>();
             }
 
-            obj.transform.SetParent(grid);
+            obj.transform.SetParent(grid,false); // worldPositionStays false
 
             //Settings
             tr.sortingOrder = category.SortingOrder;

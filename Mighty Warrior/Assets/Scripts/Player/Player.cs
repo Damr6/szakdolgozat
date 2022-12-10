@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
     public Sprite openedDoor;
 
     private float nextDamageTime = Enemy.attackRate;
-    private bool slimeCanAttack;
 
     // Start is called before the first frame update
     void Start()
